@@ -3,5 +3,5 @@ require 'bundler'
 
 Bundler.require
 
-require './forrster-rss-app'
+require './forrster-feed-app'
 run Sinatra::Application
