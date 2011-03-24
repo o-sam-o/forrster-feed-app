@@ -10,7 +10,7 @@ get '/:username' do
 
   builder do |x|
 
-    x.atom_feed(:url => url("/#{params[:username]}")) {
+    x.feed(:url => url("/#{params[:username]}")) {
       x.title "Post by Forrster #{params[:username]}"
       x.updated Time.now.utc
  
