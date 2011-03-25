@@ -21,7 +21,16 @@ get '/:username' do
           x.title post[:title]
           x.link(href: post[:url])
           x.id post[:id]
-          x.content(post[:formatted_content], type: 'html')
+          content = ""
+          unless post[:formatted_content].blank?
+            content << "<h1>Content:</h1>\n"
+            content << post[:formatted_content]
+          end
+          unless post[:formatted_description].blank?
+            content << "<h1>Description:</h1>\n"
+            content << post[:formatted_description]
+          end
+          x.content(content, type: 'html')
           x.updated post[:updated_at]
           x.author params[:username]
         }
