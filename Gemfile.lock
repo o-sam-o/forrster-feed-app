@@ -25,6 +25,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  builder
-  heroku
-  sinatra
+  activesupport (~> 3.0.5)
+  builder (~> 3.0.0)
+  heroku (~> 1.19.1)
+  sinatra (~> 1.2.1)
