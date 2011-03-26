@@ -37,7 +37,7 @@ not_found do
 end
 
 def to_xs_date_time(time)
-  DateTime.parse(time.to_s).strftime('%Y-%m-%dT%H:%M:%SZ%z').insert(-3, ':')
+  DateTime.parse(time.to_s).strftime('%Y-%m-%dT%H:%M:%S%z').insert(-3, ':')
 end
 
 __END__
