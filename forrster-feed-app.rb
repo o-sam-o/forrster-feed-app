@@ -10,9 +10,11 @@ get '/:username' do |username|
   content_type 'application/atom+xml'
   builder do |x|
 
-    x.feed(xmlns: "http://www.w3.org/2005/Atom", url: url("/#{username}")) {
+    x.feed(xmlns: "http://www.w3.org/2005/Atom") {
       x.title   "Post by Forrster #{username}"
       x.updated Time.now.utc
+      x.link    href: url("/#{username}"), rel: "self"
+      x.id      "#{username}:forrster:post:feed"
 
       result[:resp].each do |post|
         x.entry {
@@ -21,7 +23,7 @@ get '/:username' do |username|
           x.id        post[:id]
           x.content   haml :content, locals: {post: post}, type: 'html'
           x.updated   post[:updated_at]
-          x.author    username
+          x.author    { x.name username }
         }
       end
     }
