@@ -35,9 +35,16 @@ end
 __END__
 
 @@ content
+
+- if post[:url].blank?
+  %h2= post[:title]
+- else
+  %h2
+    %a{href: post[:url]}= post[:title]
+
+- unless post[:snaps].blank? || post[:snaps][:mega_url].blank?
+  %img{src: post[:snaps][:mega_url]}
 - unless post[:content].blank?
-  %h2 Content:
   %pre= post[:content]
 - unless post[:formatted_description].blank?
-  %h2 Description:
   %p= post[:formatted_description]
