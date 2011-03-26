@@ -11,10 +11,11 @@ get '/:username' do |username|
   builder do |x|
 
     x.feed(xmlns: "http://www.w3.org/2005/Atom") {
-      x.title   "Post by Forrster #{username}"
-      x.updated Time.now.utc
-      x.link    href: url("/#{username}"), rel: "self"
-      x.id      "#{username}:forrster:post:feed"
+
+      x.title     "Post by Forrster #{username}"
+      x.updated   to_xs_date_time Time.now.utc
+      x.link      href: url("/#{username}"), rel: "self"
+      x.id        "#{username}:forrster:post:feed"
 
       result[:resp].each do |post|
         x.entry {
@@ -22,7 +23,7 @@ get '/:username' do |username|
           x.link      href: post[:post_url]
           x.id        post[:id]
           x.content   haml :content, locals: {post: post}, type: 'html'
-          x.updated   post[:updated_at]
+          x.updated   to_xs_date_time post[:updated_at]
           x.author    { x.name username }
         }
       end
@@ -33,6 +34,10 @@ end
 
 not_found do
   "Forrst user not found. Try: #{url("/kyle")}"
+end
+
+def to_xs_date_time(time)
+  DateTime.parse(time.to_s).strftime('%Y-%m-%dT%H:%M:%S%z')
 end
 
 __END__
