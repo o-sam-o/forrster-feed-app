@@ -7,9 +7,10 @@ get '/:username' do |username|
   result = JSON.parse(data).with_indifferent_access
   pass if result[:stat] == 'fail'
 
+  content_type 'application/atom+xml'
   builder do |x|
 
-    x.feed(url: url("/#{username}")) {
+    x.feed(xmlns: "http://www.w3.org/2005/Atom", url: url("/#{username}")) {
       x.title   "Post by Forrster #{username}"
       x.updated Time.now.utc
 
