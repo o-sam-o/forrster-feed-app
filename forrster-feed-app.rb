@@ -21,8 +21,8 @@ get '/:username' do |username|
         x.entry {
           x.title     post[:title]
           x.link      href: post[:post_url]
-          x.id        post[:id]
-          x.content   haml :content, locals: {post: post}, type: 'html'
+          x.id        post[:post_url]
+          x.content   haml(:content, locals: {post: post}), type: 'html'
           x.updated   to_xs_date_time post[:updated_at]
           x.author    { x.name username }
         }
