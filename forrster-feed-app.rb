@@ -12,7 +12,7 @@ get '/:username' do |username|
 
     x.feed(xmlns: "http://www.w3.org/2005/Atom") {
 
-      x.title     "Post by Forrster #{username}"
+      x.title     "Posts by Forrster #{username}"
       x.updated   to_xs_date_time Time.now.utc
       x.link      href: url("/#{username}"), rel: "self"
       x.id        "#{username}:forrster:post:feed"
