@@ -6,10 +6,10 @@ produces an [Atom](http://en.wikipedia.org/wiki/Atom) feed of a
 
 ## Development
 
-  git clone https://github.com/o-sam-o/forrster-feed-app.git
-  bundle install
-  rackup
-  open http://localhost:9292/kyle
+    git clone https://github.com/o-sam-o/forrster-feed-app.git
+    bundle install
+    rackup
+    open http://localhost:9292/kyle
 
 ## Deployment
 
@@ -25,4 +25,5 @@ it](http://heroku.com/docs/index.html#_manage_keys_on_heroku)
 _Deployment instructions mostly copied from [heroku-sinatra-app](https://github.com/sinatra/heroku-sinatra-app)_
 
 ## Licence
+
 MIT
