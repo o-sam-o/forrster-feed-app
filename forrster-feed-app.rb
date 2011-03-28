@@ -7,6 +7,7 @@ get '/:username' do |username|
   result = JSON.parse(data).with_indifferent_access
   pass if result[:stat] == 'fail'
 
+  response['Cache-Control'] = "public, max-age=3600"
   content_type 'application/atom+xml'
   builder do |x|
 
